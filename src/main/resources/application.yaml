@@ -1,4 +1,14 @@
 spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+  devtools:
+    livereload:
+      enabled: true
+    thymeleaf:
+      cache: false
+    restart:
+      enabled: true
   profiles:
     include: secret
 
@@ -8,3 +18,5 @@ riot:
 logging:
   level:
     com.example.demo.client: debug
+
+

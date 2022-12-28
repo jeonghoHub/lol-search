@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <img id="userIcon"></img>
+</div>
+</body>
+<script th:inline="javascript">
+    const userIconCode = [[${summonerInfo.getProfileIconId}]];
+    document.getElementById("userIcon").src = "https://ddragon.leagueoflegends.com/cdn/12.23.1/img/profileicon/"+userIconCode+".png"
+</script>
+</html>
+
+
+<!--${th:text=${summonerInfo.getProfileIconId()}}}-->
