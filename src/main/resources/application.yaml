@@ -1,0 +1,10 @@
+spring:
+  profiles:
+    include: secret
+
+riot:
+  url: https://kr.api.riotgames.com/lol
+
+logging:
+  level:
+    com.example.demo.client: debug
