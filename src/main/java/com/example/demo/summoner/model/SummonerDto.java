@@ -1,11 +1,8 @@
-package com.example.demo.dto;
+package com.example.demo.summoner.model;
 
-import lombok.Data;
-import lombok.ToString;
-
-@Data
-@ToString
-public class SummonerDTO {
+import lombok.Builder;
+@Builder
+public class SummonerDto {
     private String id;
     private String accountId;
     private String puuid;
