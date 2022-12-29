@@ -1,4 +1,4 @@
-package com.example.demo.summoner.feignClient;
+package com.example.demo.summoner.client;
 
 import com.example.demo.summoner.Summoner;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -10,6 +10,4 @@ public interface SummonerClient {
     @GetMapping("/summoner/v4/summoners/by-name/{summonerName}")
     Summoner getSummonerByName(@PathVariable("summonerName") String summonerName);
 
-//    @GetMapping("/league/v4/entries/by-summoner/{encryptedSummonerId}")
-//    List<LeagueEntryDTO> getLeagueEntryInfo(@PathVariable("encryptedSummonerId") String encryptedSummonerId);
 }
