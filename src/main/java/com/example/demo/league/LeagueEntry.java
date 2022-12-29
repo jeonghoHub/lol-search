@@ -1,5 +1,6 @@
 package com.example.demo.league;
 
+import com.example.demo.league.model.LeagueEntryDto;
 import lombok.Data;
 import lombok.ToString;
 
@@ -20,4 +21,21 @@ public class LeagueEntry {
     public boolean freshBlood;
     public boolean hotStreak;
 
+    public LeagueEntryDto toDto() {
+        return LeagueEntryDto.builder()
+                .leagueId(leagueId)
+                .queueType(queueType)
+                .tier(tier)
+                .rank(rank)
+                .summonerId(summonerId)
+                .summonerName(summonerName)
+                .leaguePoints(leaguePoints)
+                .wins(wins)
+                .losses(losses)
+                .veteran(veteran)
+                .inactive(inactive)
+                .freshBlood(freshBlood)
+                .hotStreak(hotStreak)
+                .build();
+    }
 }

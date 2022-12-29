@@ -1,7 +1,11 @@
 package com.example.demo.summoner.model;
 
 import lombok.Builder;
+import lombok.Data;
+import lombok.Getter;
+
 @Builder
+@Data
 public class SummonerDto {
     private String id;
     private String accountId;
