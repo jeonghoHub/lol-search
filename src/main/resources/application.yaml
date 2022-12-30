@@ -17,6 +17,5 @@ riot:
 
 logging:
   level:
-    com.example.demo.client: debug
-
+    com.example.demo: debug
 

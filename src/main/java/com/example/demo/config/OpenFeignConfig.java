@@ -11,7 +11,7 @@ import static feign.Retryer.*;
 
 
 @Configuration
-@EnableFeignClients(basePackages = "com.example.demo")
+@EnableFeignClients(basePackages = {"com.example.demo.league", "com.example.demo.summoner"})
 public class OpenFeignConfig {
     @Value("${riot.key}")
     public String key;

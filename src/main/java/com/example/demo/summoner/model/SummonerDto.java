@@ -7,11 +7,12 @@ import lombok.Getter;
 @Builder
 @Data
 public class SummonerDto {
-    private String id;
+    private String encryptedSummonerId;
     private String accountId;
     private String puuid;
     private String name;
     private int profileIconId;
+    private String profileIconPath;
     private long revisionDate;
     private long summonerLevel;
 }

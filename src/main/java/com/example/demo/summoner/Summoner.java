@@ -17,12 +17,17 @@ public class Summoner {
 
     public SummonerDto toDto() {
         return SummonerDto.builder()
-                .id(id)
+                .encryptedSummonerId(id)
+                .name(name)
                 .accountId(accountId)
                 .puuid(puuid)
                 .profileIconId(profileIconId)
+                .profileIconPath(initProfileIconPathById())
                 .revisionDate(revisionDate)
                 .summonerLevel(summonerLevel)
                 .build();
+    }
+    private String initProfileIconPathById() {
+        return "https://ddragon.leagueoflegends.com/cdn/12.23.1/img/profileicon/"+profileIconId+".png";
     }
 }
