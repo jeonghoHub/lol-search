@@ -38,6 +38,19 @@ dependencyManagement {
     }
 }
 
+test {
+    useJUnitPlatform() {
+        excludeTags "integration"
+    }
+}
+
+task integrationTest(type: Test) {
+    useJUnitPlatform {
+        includeTags "integration", "fast"
+    }
+    shouldRunAfter test
+}
+
 tasks.named('test') {
     useJUnitPlatform()
 }
