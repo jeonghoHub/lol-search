@@ -25,7 +25,7 @@ public interface LeagueController{
         @Override
         @GetMapping("/id/{encryptedSummonerId}")
         public Response getLeagueByEncryptedSummonerId(@PathVariable String encryptedSummonerId) {
-            return success(findEntry.withSummonerId(encryptedSummonerId));
+            return success(findEntry.with(encryptedSummonerId));
         }
     }
 }

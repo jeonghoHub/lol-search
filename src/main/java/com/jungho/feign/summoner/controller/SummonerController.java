@@ -1,20 +1,33 @@
 package com.jungho.feign.summoner.controller;
 
-import com.jungho.feign.common.Response;
-import com.jungho.feign.summoner.model.Summoner;
-import com.jungho.feign.summoner.service.SummonerService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
-
 import static com.jungho.feign.common.Response.success;
 
-@RestController
-@RequiredArgsConstructor
-@RequestMapping("/api/v1/summoner")
-public class SummonerController {
-    private final SummonerService summonerService;
+import com.jungho.feign.common.Response;
+import com.jungho.feign.summoner.model.Summoner;
+import com.jungho.feign.summoner.service.FindSummoner;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+public interface SummonerController {
+
     @GetMapping("/name/{userName}")
-    public Response<Summoner> getSummonerByName(@PathVariable String userName) {
-        return success(summonerService.getSummonerByUser(userName));
+    Response<Summoner> getSummonerByName(@PathVariable String userName);
+
+    @RestController
+    @RequiredArgsConstructor
+    @RequestMapping("/api/v1/summoner")
+    class WebSummonerController implements SummonerController {
+
+        private final FindSummoner findSumonner;
+
+        @Override
+        @GetMapping("/name/{userName}")
+        public Response getSummonerByName(@PathVariable String userName) {
+            return success(findSumonner.with(userName));
+        }
     }
 }
+

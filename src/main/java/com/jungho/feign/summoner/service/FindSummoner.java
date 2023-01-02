@@ -5,15 +5,18 @@ import com.jungho.feign.summoner.model.Summoner;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-public interface SummonerService {
-    Summoner getSummonerByUser(String summonerName);
+@FunctionalInterface
+public interface FindSummoner {
+
+    Summoner with(String summonerName);
+
     @Service
     @RequiredArgsConstructor
-    class SummonerServiceImpl implements SummonerService {
+    class FindSummonerService implements FindSummoner {
         private final SummonerClient summonerClient;
         @Override
-        public Summoner getSummonerByUser(String summonerName) {
-            return summonerClient.toSummoner(summonerClient.getSummonerByName(summonerName));
+        public Summoner with(String summonerName) {
+            return summonerClient.toSummoner(summonerClient.with(summonerName));
         }
     }
 }

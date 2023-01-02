@@ -1,23 +1,24 @@
 package com.jungho.feign.league.service;
 
-import com.jungho.feign.league.client.LeagueClient;
+import com.jungho.feign.league.client.CallLeagueInfo;
 import com.jungho.feign.league.model.EntryInfo;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 public interface FindEntry {
-    List<EntryInfo> withSummonerId(String encryptedSummonerId);
+    List<EntryInfo> with(String encryptedSummonerId);
+
 
     @Service
     @RequiredArgsConstructor
     class FindEntryService implements FindEntry {
 
-        private final LeagueClient leagueClient;
+        private final CallLeagueInfo leagueClient;
 
         @Override
-        public List<EntryInfo> withSummonerId(String encryptedSummonerId) {
-            return leagueClient.getLeagueEntryInfo(encryptedSummonerId)
+        public List<EntryInfo> with(String encryptedSummonerId) {
+            return leagueClient.with(encryptedSummonerId)
                     .stream()
                     .map(leagueClient::toEntry)
                     .toList();
