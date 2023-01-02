@@ -17,5 +17,5 @@ riot:
 
 logging:
   level:
-    com.example.demo: debug
+    com.jungho.feign: debug
 
