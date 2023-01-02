@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import java.util.List;
 @FeignClient(name = "league", url = "${riot.url}")
-public interface LeagueClient {
+public interface CallLeagueInfo {
     @GetMapping("/league/v4/entries/by-summoner/{encryptedSummonerId}")
-    List<ClientResponse> getLeagueEntryInfo(@PathVariable("encryptedSummonerId") String encryptedSummonerId);
+    List<ClientResponse> with(@PathVariable("encryptedSummonerId") String encryptedSummonerId);
 
     default EntryInfo toEntry(ClientResponse clientResponse){
         return new EntryInfo(

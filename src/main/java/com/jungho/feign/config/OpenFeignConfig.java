@@ -14,6 +14,7 @@ import static feign.Retryer.*;
 @EnableFeignClients(basePackages = {"com.jungho.feign.league", "com.jungho.feign.summoner"})
 public class OpenFeignConfig {
     private final String key;
+    private static final String HEADER_KEY = "api_key";
     public OpenFeignConfig(@Value("${riot.key}")String key) {
         this.key = key;
     }
@@ -27,6 +28,6 @@ public class OpenFeignConfig {
     }
     @Bean
     public RequestInterceptor requestInterceptor() {
-        return template -> template.query("api_key", key);
+        return template -> template.query(HEADER_KEY, key);
     }
 }
